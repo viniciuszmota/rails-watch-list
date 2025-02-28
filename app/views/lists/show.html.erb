@@ -1,19 +1,27 @@
-<h1><%= @list.name %></h1>
+<h1 class="text-center mt-5 fw-bold"><%= @list.name %></h1>
 
-<div class="card">
-  <div class="card-body">
-    <% if @list.bookmarks.any? %>
-      <% @list.bookmarks.each do |bookmark| %>
-        <%= image_tag bookmark.movie.poster_url, alt: 'bookmark.movie.title' %>
-        <p><%= bookmark.movie.title %></p>
-        <p><%= bookmark.movie.overview %></p>
-      <% end %>
-    <% else %>
-      <p>No movies in the list.</p>
+<div class="row mt-5">
+  <% if @list.bookmarks.any? %>
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+         <%= image_tag bookmark.movie.poster_url, alt: 'bookmark.movie.title' %>
+          <div class="card-body">
+            <p class="card-title bg-secondary text-white text-center fw-bold fs-3"><%= bookmark.movie.title %></p>
+            <p class="card-text bg-secondary text-white"><%= bookmark.movie.overview %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% else %>
+    <p class="text-center mt-5 text-white fw-bold">No movies in the list.</p>
+  <% end %>
 </div>
 
-<%= link_to 'Back to Lists', lists_path %>
-<%= link_to "Delete this list", list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" } %>
-<%= link_to 'Add a movie to this list', new_list_bookmark_path(@list) %>
+<footer class="mt-5 text-center">
+  <p class="text-white">
+    <%= link_to 'Back to Lists', lists_path, class: "btn btn-magic text-decoration-none text-white ms-5 fw-bold" %>
+    <%= link_to "Delete this list", list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "btn btn-magic text-decoration-none text-white ms-5 fw-bold" %>
+    <%= link_to 'Add a movie to this list', new_list_bookmark_path(@list), class: "btn btn-magic text-decoration-none text-white ms-5 fw-bold" %>
+  </p>
+</footer>

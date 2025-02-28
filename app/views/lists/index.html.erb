@@ -1,13 +1,21 @@
-<h1>Lists</h1>
-
-<div class="card">
-  <div class="card-body">
+<div class="container mt-5">
+  <div class="row">
     <% @lists.each do |list| %>
-      <p>
-        <%= link_to list.name, list_path(list) %>
-      </p>
+      <div class="col-md-4 mb-3">
+        <div class="card" style="height: 250px;"> <!-- Aumenta a altura do card -->
+          <div class="card-body bg-dark d-flex justify-content-center align-items-center">
+            <p class="mb-0">
+              <%= link_to list.name, list_path(list), class: "text-white fw-bold text-decoration-none fs-1" %>
+            </p>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
 
-<%= link_to 'Create new List', new_list_path %>
+<footer class="mt-5 text-center">
+  <p class="text-white">
+    <%= link_to 'Create new List', new_list_path, class: "btn btn-magic text-decoration-none text-white ms-5 fw-bold"%>
+  </p>
+</footer>

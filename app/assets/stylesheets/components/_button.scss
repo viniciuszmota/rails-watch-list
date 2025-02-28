@@ -1,0 +1,13 @@
+.btn-magic {
+  background-color: $magic;
+  border: 2px solid darken($magic, 10%);
+  padding: 10px 20px;
+  border-radius: $border-radius;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: lighten($magic, 10%);
+    transform: scale(1.05);
+  }
+}
