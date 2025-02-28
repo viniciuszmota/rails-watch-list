@@ -2,7 +2,7 @@
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col-md-4 mb-3">
-        <div class="card">
+        <div class="card" style="height: 250px;">
           <div class="card-body bg-dark d-flex justify-content-center align-items-center">
             <p class="mb-0">
               <%= link_to list.name, list_path(list), class: "text-white fw-bold text-decoration-none fs-1" %>
