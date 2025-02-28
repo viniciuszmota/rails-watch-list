@@ -5,6 +5,7 @@ before_action :set_list, only: [:show, :destroy]
   end
 
   def show
+    @bookmark = Bookmark.new
   end
 
   def new

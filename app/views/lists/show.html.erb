@@ -4,13 +4,16 @@
   <div class="card-body">
     <% if @list.bookmarks.any? %>
       <% @list.bookmarks.each do |bookmark| %>
+        <%= image_tag bookmark.movie.poster_url, alt: 'bookmark.movie.title' %>
         <p><%= bookmark.movie.title %></p>
+        <p><%= bookmark.movie.overview %></p>
       <% end %>
     <% else %>
-      <p>No movies added yet.</p>
+      <p>No movies in the list.</p>
     <% end %>
   </div>
 </div>
 
 <%= link_to 'Back to Lists', lists_path %>
 <%= link_to "Delete this list", list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" } %>
+<%= link_to 'Add a movie to this list', new_list_bookmark_path(@list) %>

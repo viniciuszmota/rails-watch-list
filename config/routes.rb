@@ -8,13 +8,11 @@ Rails.application.routes.draw do
   root to: "lists#index"
 
   resources :lists, except: [:edit, :update] do
-    resources :bookmarks, only: [:new, :create]
-    resources :reviews, only: [:new, :create]
+    resources :bookmarks, only: [:new, :create, :destroy]
   end
 
   resources :bookmarks, only: :destroy
 
-  resources :reviews, only: :destroy
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
