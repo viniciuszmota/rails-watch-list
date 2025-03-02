@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # get "index", to: "lists#index", as: :lists
-  # get "new", to: "lists#new"
-  # post "create", to: "lists#create"
-
   root to: "lists#index"
 
   resources :lists, except: [:edit, :update] do
